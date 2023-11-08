@@ -15,9 +15,7 @@ def openToysterPage(context):
 @then(u'Verify Toyster Title is present')
 def verifyPageTitle(context):
     title = context.driver.title
-    assert title == "Toyster"
-
-
+    assert title == "TOYSTER Singapore - Online Toys Retailer – Toyster"
 
 @then(u'Close browser')
 def closeBrowser(context):
