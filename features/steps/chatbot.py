@@ -43,17 +43,11 @@ def goToProductPage(context):
 def clickFilter(context):
     filterButton = context.driver.find_element(By.XPATH,"//select[@name='SortTags']")
     filterButton.click()
-    filterDropdown = context.driver.find_element(By.XPATH,'//option[text()="Roblox"]')
-    filterDropdown.click()
 
-@then(u'Check each product')
-def checkProduct(context):  
-    search_text = "Roblox"
-    products = context.driver.find_element(By.CLASS_NAME,"product-card__name")
-    if search_text in products.text:
-        print(f"The element contains the {search_text}.")
-    else:
-        print(f"The element does not contain the search text: {search_text}.")  
+@then(u'Input multiple "{dropdownOptions}"')
+def step_impl(context, dropdownOptions):
+    filterDropdown = context.driver.find_element(By.XPATH,'//option[text()="{}"]'.format(dropdownOptions))
+    filterDropdown.click()
     
 #Close browser
 @then(u'Close browser')

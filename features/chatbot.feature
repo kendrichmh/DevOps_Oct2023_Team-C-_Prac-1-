@@ -9,9 +9,14 @@ Feature: Test Chatbot interactability
         Then Click Toyster Chatbot Prompt
         And Close browser
     
-    #Hanisah - Second test case it to check the product page, see if the filter works properly 
-    Scenario: Go Product Page
+    #Hanisah - Second test case it to check the product page, see if the filter works properly by selecting multiple different options
+    Scenario Outline: File in with multiple dropdown option
         Then Select Product
         Then Select Filter Dropdown
-        Then Check each product
+        Then Input multiple "<dropdownOptions>"
         And Close browser
+    Examples:
+        |dropdownOptions|
+        |Roblox|
+        |WARHAMMER 40K|
+        |Pokémon|

@@ -9,6 +9,8 @@ list of all test cases
 7. Chatbot - Hanisah
 ![alt text](/Screenshots/Hanisah_Chatbot_TC1.png)
 8. Filter - Hanisah
-![alt text](/Screenshots/Hanisah_Filter_TC2.png)
+![alt text](/Screenshots/Hanisah_Filter_TC2_01.png)
+![alt text](/Screenshots/Hanisah_Filter_TC2_02.png)
+![alt text](/Screenshots/Hanisah_Filter_TC2_03.png)
 1.  Sort - Kendric
 2.  Search - Kendric
