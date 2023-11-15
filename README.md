@@ -1,12 +1,14 @@
 # DevOps_Oct2023_Team-C-_Prac-1-
 list of all test cases
 1. Create account - Nicholas
-2. Login - Fail, Success - Eliot
-3. Forget Password - Eliot
-4. Add to cart - Harshini
-5. Remove from cart - Harshini
-6. Chatbot - Haninsah
-7. Filter - Haninsah
-8. Sort - Kendric
-9. Search - Kendric
-10. Customer Review - Nicholas
+2. Customer Review - Nicholas
+3. Login - Fail, Success - Eliot
+4. Forget Password - Eliot
+5. Add to cart - Harshini
+6. Remove from cart - Harshini
+7. Chatbot - Hanisah
+![alt text](/Screenshots/Hanisah_Chatbot_TC1.png)
+8. Filter - Hanisah
+![alt text](/Screenshots/Hanisah_Filter_TC2.png)
+1.  Sort - Kendric
+2.  Search - Kendric
