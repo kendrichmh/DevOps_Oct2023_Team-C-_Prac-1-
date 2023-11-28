@@ -8,7 +8,7 @@ Feature: Login to the Toyster Website
 
   Scenario: Get Email to Update Password
     When Click Forgot Password
-    And Enter email "fdlxiabbqfvrxsdxig@cazlq.com" to reset Password
+    And Enter email "elliot.ngwk@gmail.com" to reset Password
     And Click Submit
     Then see We've sent you an email with a link to update your password
 
