@@ -1,4 +1,5 @@
-from common_steps import then, sleep, By
+from common_steps import *
+from time import sleep
 
 # Navigate to Register Account page
 @when(u'Open Toyster Register Account page')
@@ -16,6 +17,7 @@ def step_impl(context, firstName, lastName, email, password):
         context.driver.find_element("id","Email").send_keys(email)
     if password != 'BLANK':
         context.driver.find_element("id","CreatePassword").send_keys(password)
+    sleep(5)
 
 @then(u'Click Create')
 def step_impl(context): 

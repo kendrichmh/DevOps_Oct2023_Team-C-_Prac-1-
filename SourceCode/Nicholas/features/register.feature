@@ -21,7 +21,7 @@ Feature: Verify User Account Creation
 
 
     Scenario Outline: Validate Invalid Form Submission
-        Then Input multiple "<firstName>", "<lastName>", "<email>" and "<password>"
+        Then  Input multiple "<firstName>" and "<lastName>" and "<email>" and "<password>"
         And Click Create
         Then Navigate to My Account Page
         Then Verify Account is not Created
