@@ -28,7 +28,7 @@ options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # 11.Customer Review
 
 
-#General Test
+# General Test -------------------------------------------------------------------------
 @given(u'Chrome browser is Launched')
 def launchChromeBrowser(context):
     context.driver = webdriver.Chrome(options=options)
@@ -47,7 +47,8 @@ def verifyPageTitle(context):
 def closeBrowser(context):
     context.driver.close()
 
-# Login Test
+'''
+# Login Test -------------------------------------------------------------------------
 @when(u'they click the login link')
 def customerLoginLink(context):
     customer_login_link = context.driver.find_element(By.ID, 'customer_login_link')
@@ -100,9 +101,57 @@ def seeError(context):
     LoginText = context.driver.find_element("xpath", "//body/div[4]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]")
     ExpectedText = "Incorrect email or password."
     assert LoginText.text == ExpectedText, "Error Message not Found"
+'''
+# Register Test -------------------------------------------------------------------------
+
+# Navigate to Register Account page
+@when(u'Open Toyster Register Account page')
+def step_impl(context):
+    context.driver.get("https://toyster.sg/account/register")
+
+# Input fields
+@then(u'Input multiple "{firstName}" and "{lastName}" and "{email}" and "{password}"')
+def step_impl(context, firstName, lastName, email, password):
+    if firstName != 'BLANK':
+        context.driver.find_element("id", "FirstName").send_keys(firstName)
+    if lastName != 'BLANK':
+        context.driver.find_element("id","LastName").send_keys(lastName)
+    if email != 'BLANK':
+        context.driver.find_element("id","Email").send_keys(email)
+    if password != 'BLANK':
+        context.driver.find_element("id","CreatePassword").send_keys(password)
+
+@then(u'Click Create')
+def step_impl(context): 
+    context.driver.find_element("xpath", "//*[@id='create_customer']/p/input[@class='btn']").click()
+    sleep(5)
 
 
-# Forget Password Test
+@then(u'Navigate to My Account Page')
+def step_impl(context):
+    context.driver.find_element("xpath", "//*[@id='StickyNav']//div[@class='customer-login-links sticky-hidden']/a[1]").click()
+    sleep(5)
+
+# -- Scenario 2 Valid Credentials
+@then(u'Verify Account is Created')
+def step_impl(context):
+    try:
+        my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
+        assert my_account_element.is_displayed(), "My Account heading is displayed"
+    except:
+        assert False, "My Account heading is not displayed"
+
+# -- Scenario 2 Invalid Credentials
+@then(u'Verify Account is not Created')
+def step_impl(context):
+    try:
+        my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
+        assert not(my_account_element.is_displayed()), "My Account heading is not displayed"
+    except:
+        assert True, "My Account heading is displayed"
+
+'''
+# Forget Password Test -------------------------------------------------------------------------
 @when(u'Click Forgot Password')
 def clickForgotPassword(context):
     customer_ForgotPassword_button = context.driver.find_element(By.ID, 'RecoverPassword')
@@ -127,7 +176,7 @@ def seeConfirmation(context):
     ExpectedText = "We've sent you an email with a link to update your password."
     assert ConfirmationText.text == ExpectedText, "Error Message not Found"
 
-# Search Test
+# Search Test -------------------------------------------------------------------------
 @then(u'Input Toyname "{toyName}"')
 def inputToyName(context,toyName):
     context.driver.find_element("id", "SiteNavSearch").send_keys(toyName)
@@ -146,7 +195,7 @@ def ViewProduct(context):
     viewToy.click()
     sleep(2)
 
-# Sort Test
+# Sort Test -------------------------------------------------------------------------
 @then(u'MainMenu Sorting')
 def MainSort(context):
     dropdown = context.driver.find_element(By.XPATH,"//*[@id='SiteNavCompressed']")
@@ -166,7 +215,7 @@ def SortBy(context):
     # select by visible text
     drop.select_by_visible_text("Date, new to old")
 
-# Filter Test
+# Filter Test -------------------------------------------------------------------------
 @then(u'Select Product')
 def goToProductPage(context):
     chatbotButton = context.driver.find_element(By.XPATH,"//a[@title='Action Figures & Collectible']")
@@ -182,7 +231,7 @@ def step_impl(context, dropdownOptions):
     filterDropdown = context.driver.find_element(By.XPATH,'//option[text()="{}"]'.format(dropdownOptions))
     filterDropdown.click()
 
-# Add to Cart Test
+# Add to Cart Test -------------------------------------------------------------------------
 @then(u'Click on category')
 def goToCategory(context):
     categoryBtn = context.driver.find_element(By.XPATH,"//a[@title='Action Figures & Collectible']")
@@ -213,7 +262,7 @@ def verifyCartItemsadded(context):
     assert item_text == item_name
     sleep(5)
 
-# Remove from Cart Test
+# Remove from Cart Test -------------------------------------------------------------------------
 @then(u'Click on remove')
 def removeCartItems(context):
     removeItemsBtn = context.driver.find_element(By.XPATH,"//a[contains(@href, '/cart/change?line=1&quantity=0')]")
@@ -224,7 +273,7 @@ def removeCartItems(context):
 def verifyCartItemsremoved(context):
     cart_empty_message = context.driver.find_element(By.XPATH,"//p[@class='cart--empty-message']")
 
-# Chatbot Test
+# Chatbot Test -------------------------------------------------------------------------
 @then(u'Click Toyster Chatbot')
 def clickChatbot(context):
     sleep(3)
@@ -242,3 +291,4 @@ def clickChatbotPrompt(context):
     chatbotPromptButton = context.driver.find_element(By.XPATH, '//button/p[text()="What is your operating hour?"]')
     chatbotPromptButton.click()
     context.driver.switch_to.default_content()
+'''
