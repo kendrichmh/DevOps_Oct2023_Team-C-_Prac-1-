@@ -1,4 +1,4 @@
-Feature: Test Chatbot interactability
+Feature: Test Chatbot interactability and Check Filter working properly
     Background: Common Steps
         Given Chrome browser is Launched
         When Open Toyster page
