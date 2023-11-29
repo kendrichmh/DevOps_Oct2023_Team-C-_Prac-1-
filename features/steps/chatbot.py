@@ -1,10 +1,7 @@
-from behave import *
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from time import sleep
+from common_steps import then, sleep, By
 
 #Background
+'''
 @given(u'Chrome browser is Launched')
 def launchChromeBrowser(context):
     context.driver = webdriver.Chrome()
@@ -13,6 +10,7 @@ def launchChromeBrowser(context):
 @when(u'Open Toyster page')
 def openToysterPage(context):
     context.driver.get("https://toyster.sg")
+'''
 
 #Scenario 1
 @then(u'Click Toyster Chatbot')
