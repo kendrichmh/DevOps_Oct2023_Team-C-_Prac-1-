@@ -32,28 +32,24 @@ def step_impl(context):
         sleep(5)
     except:
         context.driver.close()
-        assert False, "Blocked by Captcha"
+        assert "Account page could not be found"
 
 # -- Scenario 2 Valid Credentials
 @then(u'Verify Account is Created')
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
-        if not(my_account_element.is_displayed()):
-            context.driver.close()
-            assert "Account was not Created, Blocked by Captcha"
+        assert my_account_element.is_displayed(), "Account was not Created"
     except:
         context.driver.close()
-        assert False, "Cannot find account"
+        assert "Account was not Created, Blocked by Captcha"
 
 # -- Scenario 2 Invalid Credentials
 @then(u'Verify Account is not Created')
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
-        if my_account_element.is_displayed():
-            context.driver.close()
-            assert "Account was Created"
+        context.driver.close()
+        assert not(my_account_element.is_displayed()), "Account was Created"
     except:
         context.driver.close()
-        assert False, "Cannot find account"
