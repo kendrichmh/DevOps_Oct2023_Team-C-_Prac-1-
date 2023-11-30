@@ -39,7 +39,9 @@ def step_impl(context):
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
-        assert my_account_element.is_displayed(), "Account was not Created"
+        flag = my_account_element.is_displayed()
+        context.driver.close()
+        assert flag, "Account was not Created"
     except:
         context.driver.close()
         assert "Account was not Created, Blocked by Captcha"
@@ -49,7 +51,8 @@ def step_impl(context):
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
+        flag = not(my_account_element.is_displayed())
         context.driver.close()
-        assert not(my_account_element.is_displayed()), "Account was Created"
+        assert flag, "Account was Created"
     except:
         context.driver.close()

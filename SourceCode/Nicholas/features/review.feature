@@ -21,7 +21,7 @@ Feature: Posting Reviews of Products
         | 5              | Alice Low       | aliceinwonderland0@long.long.email.com  | 5      | Amazing Toy for collection | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.|
 
 
-    Scenario Outline: Validate Invalid Review Submission
+    Scenario Outline: Validate Unsuccessful Review Submission
         Then Click on Product "<productNumber>"
         And Click on Write a review
         Then Input "<name>", "<email>", "<rating>", "<title>" and "<body>"
