@@ -49,4 +49,7 @@ def step_impl(context):
         assert True, "My Account heading is displayed"
 
 
-# @then('Close browser')
+
+@then('Close browser')
+def closeBrowser(context):
+    context.driver.close()
