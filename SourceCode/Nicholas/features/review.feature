@@ -10,7 +10,7 @@ Feature: Posting Reviews of Products
         Then Input "<name>", "<email>", "<rating>", "<title>" and "<body>"
         And Click Submit Review
         Then Verify Review Sucess Message
-        And Close browser
+        And Close Chrome browser
 
     Examples:
         | productNumber  | name            | email                                   | rating | title                      | body |
@@ -27,7 +27,7 @@ Feature: Posting Reviews of Products
         Then Input "<name>", "<email>", "<rating>", "<title>" and "<body>"
         And Click Submit Review
         Then Verify Review Error Message
-        And Close browser
+        And Close Chrome browser
 
     Examples:
         | productNumber  | name            | email                                   | rating | title                      | body |

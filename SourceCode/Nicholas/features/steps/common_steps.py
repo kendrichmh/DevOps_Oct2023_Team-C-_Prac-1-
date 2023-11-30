@@ -19,6 +19,6 @@ def launchChromeBrowser(context):
 def openToysterPage(context):
     context.driver.get("https://toyster.sg")
 
-@then('Close browser')
+@then('Close Chrome browser')
 def closeBrowser(context):
     context.driver.close()

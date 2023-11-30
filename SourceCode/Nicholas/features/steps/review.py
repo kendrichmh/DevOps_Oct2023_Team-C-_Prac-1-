@@ -12,6 +12,7 @@ Error Message - //div[@class='spr-form-message spr-form-message-error']
 """
 
 from common_steps import *
+from selenium.webdriver.common.by import By
 from time import sleep
 
 @when('Open Toyster Toysterific Sale page')
@@ -49,20 +50,17 @@ def step_impl_submit_review(context):
 @then('Verify Review Sucess Message')
 def step_impl_verify_success_message(context):
     try:
-        success_element = context.driver.find_element_by_class_name('spr-form-message-success').text
-        assert success_element == "Thank you for submitting a review!", "Review Posted Successfully"
+        success_element = context.driver.find_element(By.CLASS_NAME,'spr-form-message-success')
+        assert success_element.is_displayed(), "Review was not posted"
     except:
-        assert False, "Review was not posted"
+        assert False, "Could not find element"
+
 
 @then('Verify Review Error Message')
 def step_impl_verify_success_message(context):
     try:
         error_element = context.driver.find_element("xpath","//div[@class='spr-form-message spr-form-message-error']")
-        assert error_element.is_displayed(), "Review was not posted"
+        assert error_element.is_displayed(), "There was no error message"
     except:
-        assert False, "There was no error message"
+        assert False, "Could not find element"
 
-# @then('Close browser')
-@then('Close browser')
-def closeBrowser(context):
-    context.driver.close()

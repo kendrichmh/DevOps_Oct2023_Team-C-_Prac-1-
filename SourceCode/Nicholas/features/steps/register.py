@@ -47,9 +47,3 @@ def step_impl(context):
         assert not(my_account_element.is_displayed()), "My Account heading is not displayed"
     except:
         assert True, "My Account heading is displayed"
-
-
-
-@then('Close browser')
-def closeBrowser(context):
-    context.driver.close()
