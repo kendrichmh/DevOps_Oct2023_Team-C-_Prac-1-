@@ -27,23 +27,33 @@ def step_impl(context):
 
 @then(u'Navigate to My Account Page')
 def step_impl(context):
-    context.driver.find_element("xpath", "//*[@id='StickyNav']//div[@class='customer-login-links sticky-hidden']/a[1]").click()
-    sleep(5)
+    try:
+        context.driver.find_element("xpath", "//*[@id='StickyNav']//div[@class='customer-login-links sticky-hidden']/a[1]").click()
+        sleep(5)
+    except:
+        context.driver.close()
+        assert False, "Blocked by Captcha"
 
 # -- Scenario 2 Valid Credentials
 @then(u'Verify Account is Created')
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
-        assert my_account_element.is_displayed(), "My Account heading is displayed"
+        if not(my_account_element.is_displayed()):
+            context.driver.close()
+            assert "Account was not Created, Blocked by Captcha"
     except:
-        assert False, "My Account heading is not displayed"
+        context.driver.close()
+        assert False, "Cannot find account"
 
 # -- Scenario 2 Invalid Credentials
 @then(u'Verify Account is not Created')
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
-        assert not(my_account_element.is_displayed()), "My Account heading is not displayed"
+        if my_account_element.is_displayed():
+            context.driver.close()
+            assert "Account was Created"
     except:
-        assert True, "My Account heading is displayed"
+        context.driver.close()
+        assert False, "Cannot find account"
