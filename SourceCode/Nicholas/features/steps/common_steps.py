@@ -21,4 +21,7 @@ def openToysterPage(context):
 
 @then('Close Chrome browser')
 def closeBrowser(context):
-    context.driver.close()
+    try:
+        context.driver.close()
+    except:
+        pass

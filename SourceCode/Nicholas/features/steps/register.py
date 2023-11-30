@@ -7,7 +7,7 @@ def step_impl(context):
     context.driver.get("https://toyster.sg/account/register")
 
 # Input fields
-@then(u'Input multiple "{firstName}" and "{lastName}" and "{email}" and "{password}"')
+@then('Input multiple "{firstName}" and "{lastName}" and "{email}" and "{password}"')
 def step_impl(context, firstName, lastName, email, password):
     if firstName != 'BLANK':
         context.driver.find_element("id", "FirstName").send_keys(firstName)
@@ -35,7 +35,7 @@ def step_impl(context):
         assert "Account page could not be found"
 
 # -- Scenario 2 Valid Credentials
-@then(u'Verify Account is Created')
+@then('Verify Account is Created')
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")
@@ -47,7 +47,7 @@ def step_impl(context):
         assert "Account was not Created, Blocked by Captcha"
 
 # -- Scenario 2 Invalid Credentials
-@then(u'Verify Account is not Created')
+@then('Verify Account is not Created')
 def step_impl(context):
     try:
         my_account_element = context.driver.find_element("xpath","//h1[text()='My Account']")

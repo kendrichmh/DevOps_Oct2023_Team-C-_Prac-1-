@@ -29,7 +29,7 @@ def step_impl(context, productNumber):
 def step_impl_click_write_review(context):
     context.driver.find_element("xpath", "//*[@id='shopify-product-reviews']/div/div[1]/div/span[2]/a").click()
 
-@then(u'Input "{name}", "{email}", "{rating}", "{title}" and "{body}"')
+@then('Input "{name}", "{email}", "{rating}", "{title}" and "{body}"')
 def step_impl_input_review_details(context, name, email, rating, title, body):
     if name != 'BLANK':
         context.driver.find_element("xpath", "//input[contains(@class, 'spr-form-input-text') and @placeholder='Enter your name']").send_keys(name)
